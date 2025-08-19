@@ -7,7 +7,7 @@ import Reward from './components/Reward.vue';
   <NuxtLayout>
     <v-app>
     <TopDrawer />
-    <Reward/>
+    
     </v-app>
   </NuxtLayout>
 </template>

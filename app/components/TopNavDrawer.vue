@@ -45,15 +45,12 @@
       <!-- Navigation Drawer -->
       <v-navigation-drawer v-model="drawer" :location="$vuetify.display.mobile ? 'bottom' : undefined" temporary
         class="pt-0" style="top: 48px;">
-        <SideBar />
+        <SideNavDrawer />
       </v-navigation-drawer>
 
       <!-- Main Content -->
-      <v-main style="height: 500px;">
-        <v-card-text>
-          The navigation drawer will appear from the bottom on smaller size screens.
-        </v-card-text>
-      </v-main>
+      
+      <Reward/>
     </v-layout>
   </v-card>
 
@@ -145,7 +142,16 @@ const appBarStyle = `
   height: 3px; /* thicker last line */
 }
 
-
+.v-navigation-drawer {
+  height: 100vh; /* Full height */
+  position: fixed; /* Make it fixed on the left side */
+  top: 0; /* Ensure it's positioned at the top */
+  left: 0; /* Align to the left */
+  width: 250px; /* Sidebar width */
+}
+.v-app {
+  display: flex;
+}
 
 </style>
 
