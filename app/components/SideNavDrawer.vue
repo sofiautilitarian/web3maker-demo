@@ -1,50 +1,138 @@
 <template>
-    <!-- MAIN CODE PLEASE CHANGE HERE AS REQUIRED !-->
   <div class="pa-0">
-    <!-- STAGING MODE Button at the Top -->
+    <!-- STAGING MODE Button -->
     <v-list-item class="pa-2">
-      <v-btn
-        color="warning"
-        dark
-        block
-        elevation="1"
-        style="font-weight: bold;"
-      >
-        <v-icon left small>mdi-aws</v-icon>
-        STAGING MODE
+      <v-btn color="warning" block elevation="1" style="font-weight: bold;">
+        <v-icon left small style="color: black; margin-right: 8px;">
+          mdi-aws
+        </v-icon>
+        <span style="color: black;">STAGING MODE</span>
       </v-btn>
     </v-list-item>
 
-    <!-- Navigation Links -->
-    <v-list-item link title="システム"></v-list-item>
-    <v-list-item link title="入出金消込"></v-list-item>
-    <v-list-item link title="Customers"></v-list-item>
-    <v-list-item link title="セールス"></v-list-item>
-    <v-list-item link title="トレーディング"></v-list-item>
-    <v-list-item link title="マイニングブースト"></v-list-item>
-    <v-list-item link title="代理店"></v-list-item>
-    <v-list-item link title="生産"></v-list-item>
-    <v-list-item link title="ワーカー"></v-list-item>
-    <v-list-item link title="セキュリティ"></v-list-item>
-    <v-list-item link title="ショップ"></v-list-item>
-    <v-list-item link title="コイン"></v-list-item>
-    <v-list-item link title="リワード"></v-list-item>
+    <v-list density="compact" nav>
+      <v-list-group v-for="(item, index) in navItems" :key="index" :value="expanded === index"
+        @click="toggleExpand(index)" :prepend-icon="item.icon">
+        <template #activator="{ props }">
+          <v-list-item v-bind="props" :class="{ 'active-item': selected === item.title }"
+            @click.stop="selected = item.title">
+            <v-list-item-title class="font-weight-bold">{{ item.title }}</v-list-item-title>
+          </v-list-item>
+        </template>
+
+        <v-list-item v-for="(child, i) in item.children" :key="i" @click.stop="selected = child.title"
+          :class="{ 'active-item': selected === child.title }">
+          <v-list-item-title>{{ child.title }}</v-list-item-title>
+        </v-list-item>
+      </v-list-group>
+    </v-list>
   </div>
 </template>
 
+
+<!--This part contains the required items in the sidebar, every item has children!-->
 <script lang="ts">
-import { defineComponent } from 'vue'
+import { defineComponent, ref } from 'vue'
 
 export default defineComponent({
   setup() {
-    return {}
+    const selected = ref('')
+    const expanded = ref<number | null>(null)
+
+    const navItems = [
+      {
+        title: 'システム',
+        icon: 'mdi-cog',
+        children: [
+          { title: 'システム設定' },
+          { title: 'ログ' }
+        ]
+      },
+      {
+        title: '入出金消込',
+        icon: 'mdi-cash',
+        children: [
+          { title: '入金' },
+          { title: '出金' }
+        ]
+      },
+      {
+        title: 'Customers',
+        icon: 'mdi-account-group',
+        children: []
+      },
+      {
+        title: 'セールス',
+        icon: 'mdi-sale',
+        children: []
+      },
+      {
+        title: 'トレーディング',
+        icon: 'mdi-chart-line',
+        children: []
+      },
+      {
+        title: 'マイニングブースト',
+        icon: 'mdi-server',
+        children: []
+      },
+      {
+        title: '代理店',
+        icon: 'mdi-office-building',
+        children: []
+      },
+      {
+        title: '生産',
+        icon: 'mdi-factory',
+        children: []
+      },
+      {
+        title: 'ワーカー',
+        icon: 'mdi-account-hard-hat',
+        children: []
+      },
+      {
+        title: 'セキュリティ',
+        icon: 'mdi-shield-lock',
+        children: []
+      },
+      {
+        title: 'ショップ',
+        icon: 'mdi-store',
+        children: []
+      },
+      {
+        title: 'コイン',
+        icon: 'mdi-currency-btc',
+        children: []
+      },
+      {
+        title: 'リワード',
+        icon: 'mdi-gift',
+        children: []
+      }
+    ]
+
+    const toggleExpand = (index: number) => {
+      expanded.value = expanded.value === index ? null : index
+    }
+
+    return {
+      navItems,
+      selected,
+      expanded,
+      toggleExpand
+    }
   }
 })
 </script>
-
 <style scoped>
-/* Optional: Fine-tune vertical padding further */
 .v-list-item {
-  min-height: 48px; /* Adjust as needed */
+  min-height: 48px;
+  font-weight: bold;
+}
+
+.active-item {
+  background-color: #f8f8f8 !important;
 }
 </style>
