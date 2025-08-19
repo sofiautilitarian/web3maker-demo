@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import TopDrawer from './components/TopDrawer.vue';
+import TopDrawer from './components/TopNavDrawer.vue';
 
 </script>
 
@@ -7,6 +7,7 @@ import TopDrawer from './components/TopDrawer.vue';
   <NuxtLayout>
     <v-app>
     <TopDrawer />
+
     </v-app>
   </NuxtLayout>
 </template>
