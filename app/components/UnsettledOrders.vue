@@ -5,7 +5,7 @@
     </v-card>
 
     <v-card class="data-table-card" flat>
-      <DataTable1 />
+      <DataTable3 />
     </v-card>
   </div>
 </template>
@@ -13,7 +13,7 @@
 <script lang="ts">
 import { defineComponent } from 'vue'
 
-import DataTable1 from './DataTable1.vue'
+import DataTable3 from './DataTable3.vue'
 
 export default defineComponent({
   setup() {
@@ -26,7 +26,8 @@ export default defineComponent({
 
 .bgcolor {
   background-color: red;
-   /* Ensures there is some space below the navbar */
+  padding: 20px;
+  margin-top: 20px; /* Ensures there is some space below the navbar */
 }
 
 .main-content {
@@ -35,7 +36,7 @@ export default defineComponent({
 }
 
 .section-header {
-  background-color: #ef210e;
+  background-color: #496ef4;
   padding: 8px 12px;
   font-weight: bold;
   font-size: 14px;
@@ -48,6 +49,4 @@ export default defineComponent({
   max-height: 25vh; /* keep the component small — adjust as needed */
   overflow-y: auto;
 }
-
-
 </style>

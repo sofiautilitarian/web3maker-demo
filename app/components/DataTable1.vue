@@ -13,18 +13,9 @@
     </template>
 
     <template v-slot:item.actions="{ item }">
-      <v-btn
-        variant="text"
-        icon
-        @click="edit(item)"
-        @mouseenter="register($event)"
-      >
-        <v-icon>mdi-pencil</v-icon>
-      </v-btn>
+      
 
-      <v-btn variant="text" icon @click="remove(item.id)">
-        <v-icon>mdi-delete</v-icon>
-      </v-btn>
+      
     </template>
   </v-data-table>
 
@@ -75,13 +66,24 @@
   })
 
   const selected = ref()
+const headers = [
+  { title: 'シンボル画像', value: 'symbolImage', class: 'small-header' },
+  { title: '発生日', value: 'occurrenceDate', class: 'small-header' },
+  { title: '報酬種別', value: 'rewardType', class: 'small-header' },
+  { title: '台数', value: 'units', class: 'small-header' },
+  { title: 'SISC/USDロジック', value: 'siscUsdLogic', class: 'small-header' },
+  { title: 'SISC/USD', value: 'siscUsd', class: 'small-header' },
+  { title: 'USD/各ライン', value: 'usdPerLine', class: 'small-header' },
+  { title: 'USD/JPY', value: 'usdJpy', class: 'small-header' },
+  { title: 'リワード合計', value: 'totalReward', class: 'small-header' },
+  { title: 'リワード合計(JPY)', value: 'totalRewardJpy', class: 'small-header' },
+  { title: '1台あたりリワード', value: 'rewardPerUnit', class: 'small-header' },
+  { title: '1台あたりリワード(JPY)', value: 'rewardPerUnitJpy', class: 'small-header' },
+  { title: '1年度表利益日', value: 'oneYearProfitDate', class: 'small-header' },
+  { title: '3年度表利益日', value: 'threeYearProfitDate', class: 'small-header' },
+];
 
-  const headers = [
-    { title: 'ID', value: 'id' },
-    { title: 'Name', value: 'name' },
-    { title: 'Progress', value: 'progress' },
-    { title: 'Actions', value: 'actions' },
-  ]
+
 
   const items = ref([
     // { id: 1, name: 'Tumwater', progress: 50 },
@@ -127,3 +129,9 @@
     items.value = items.value.filter(item => item.id !== id)
   }
 </script>
+<style>
+.small-header {
+    font-size: 2px;
+    /* adjust as needed */
+}
+</style>
