@@ -26,7 +26,7 @@ export default defineComponent({
 .bgcolor {
   background-color: red;
   padding: 20px;
-  margin-top: 20px; /* Ensures there is some space below the navbar */
+  margin-top: 20px;  
 }
 
 .main-content {
@@ -45,7 +45,7 @@ export default defineComponent({
   padding: 0 8px;
   margin-top: 4px;
   box-shadow: none;
-  max-height: 25vh; /* keep the component small — adjust as needed */
+  /* max-height: 25vh;   */
   overflow-y: auto;
 }
 </style>

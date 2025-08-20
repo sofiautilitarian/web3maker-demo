@@ -1,12 +1,11 @@
 <script setup lang="ts">
-import TopDrawer from './components/TopNavDrawer.vue';
-import Reward from './components/Reward.vue';
+import Default from './layout/default.vue';
 </script>
 
 <template>
   <NuxtLayout>
     <v-app>
-    <TopDrawer />
+    <Default/>
     </v-app>
   </NuxtLayout>
 </template>
