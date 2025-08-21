@@ -1,18 +1,22 @@
 <template>
-  <div class="main-content">
-    <v-card class="section-header" flat>
-    ワーカー情報
-    </v-card>
-
-    <v-card class="data-table-card" flat>
+  <v-container class=''>
+    <div style="--app-header-bg: #9ACD32;">
+  <AppHeader />
+</div>
+    <div id="custom-font-for-letters">
       <DataTable4 />
-    </v-card>
-  </div>
+    </div>
+    <v-divider></v-divider>
+  </v-container>
+  
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue'
-import DataTable4 from './DataTable4.vue'
+import AppHeader from './AppHeader.vue'
+import DataTable4 from './DataTable3.vue'
+//import AppButton from './AppButton.vue'
+//import { VTable } from 'vuetify/components'
 
 export default defineComponent({
   setup() {
@@ -22,30 +26,15 @@ export default defineComponent({
 </script>
 
 <style scoped>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@900&display=swap');
 
-.bgcolor {
-  background-color: red;
-  padding: 20px;
-  margin-top: 20px;  
+
+#custom-font-for-letters::v-deep * {
+  font-size: 8px !important;
+  color: #031b2a;
+  font-family: 'Noto Serif JP', 'Sawarabi Mincho', serif;
 }
 
-.main-content {
-  padding: 0;
-  margin: 0;
-}
 
-.section-header {
-  background-color: #7fec57;
-  padding: 8px 12px;
-  font-weight: bold;
-  font-size: 14px;
-}
 
-.data-table-card {
-  padding: 0 8px;
-  margin-top: 4px;
-  box-shadow: none;
-  /* max-height: 25vh;   */
-  overflow-y: auto;
-}
 </style>

@@ -1,4 +1,5 @@
 <template>
+  <div class="logo-en-new">
   <v-data-table :headers="headers" :items="items">
     <template v-slot:item.progress="{ item }">
       <v-progress-linear
@@ -18,6 +19,7 @@
       
     </template>
   </v-data-table>
+  
 
   <v-dialog v-model="dialog" :activator="activator" max-width="500">
     <v-confirm-edit
@@ -51,6 +53,7 @@
       </template>
     </v-confirm-edit>
   </v-dialog>
+  </div>
 </template>
 <script setup>
   // v-dialog
@@ -67,20 +70,20 @@
 
   const selected = ref()
 const headers = [
-  { title: 'シンボル画像', value: 'symbolImage', class: 'small-header' },
-  { title: '発生日', value: 'occurrenceDate', class: 'small-header' },
-  { title: '報酬種別', value: 'rewardType', class: 'small-header' },
-  { title: '台数', value: 'units', class: 'small-header' },
-  { title: 'SISC/USDロジック', value: 'siscUsdLogic', class: 'small-header' },
-  { title: 'SISC/USD', value: 'siscUsd', class: 'small-header' },
-  { title: 'USD/各ライン', value: 'usdPerLine', class: 'small-header' },
-  { title: 'USD/JPY', value: 'usdJpy', class: 'small-header' },
-  { title: 'リワード合計', value: 'totalReward', class: 'small-header' },
-  { title: 'リワード合計(JPY)', value: 'totalRewardJpy', class: 'small-header' },
-  { title: '1台あたりリワード', value: 'rewardPerUnit', class: 'small-header' },
-  { title: '1台あたりリワード(JPY)', value: 'rewardPerUnitJpy', class: 'small-header' },
-  { title: '1年度表利益日', value: 'oneYearProfitDate', class: 'small-header' },
-  { title: '3年度表利益日', value: 'threeYearProfitDate', class: 'small-header' },
+  { title: 'シンボル画像', value: 'symbolImage' },
+  { title: '発生日', value: 'occurrenceDate' },
+  { title: '報酬種別', value: 'rewardType' },
+  { title: '台数', value: 'units' },
+  { title: 'SISC/USDロジック', value: 'siscUsdLogic' },
+  { title: 'SISC/USD', value: 'siscUsd' },
+  { title: 'USD/各ライン', value: 'usdPerLine' },
+  { title: 'USD/JPY', value: 'usdJpy' },
+  { title: 'リワード合計', value: 'totalReward' },
+  { title: 'リワード合計(JPY)', value: 'totalRewardJpy' },
+  { title: '1台あたりリワード', value: 'rewardPerUnit' },
+  { title: '1台あたりリワード(JPY)', value: 'rewardPerUnitJpy' },
+  { title: '1年度表利益日', value: 'oneYearProfitDate' },
+  { title: '3年度表利益日', value: 'threeYearProfitDate' },
 ];
 
 
@@ -129,9 +132,6 @@ const headers = [
     items.value = items.value.filter(item => item.id !== id)
   }
 </script>
-<style>
-.small-header {
-    font-size: 2px;
-    /* adjust as needed */
-}
+<style scope>
+
 </style>

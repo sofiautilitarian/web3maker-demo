@@ -1,4 +1,5 @@
 <template>
+  <div class="logo-en-new">
   <v-data-table :headers="headers" :items="items">
     <template v-slot:item.progress="{ item }">
       <v-progress-linear
@@ -13,20 +14,12 @@
     </template>
 
     <template v-slot:item.actions="{ item }">
-      <v-btn
-        variant="text"
-        icon
-        @click="edit(item)"
-        @mouseenter="register($event)"
-      >
-        <v-icon>mdi-pencil</v-icon>
-      </v-btn>
+      
 
-      <v-btn variant="text" icon @click="remove(item.id)">
-        <v-icon>mdi-delete</v-icon>
-      </v-btn>
+      
     </template>
   </v-data-table>
+  
 
   <v-dialog v-model="dialog" :activator="activator" max-width="500">
     <v-confirm-edit
@@ -60,8 +53,8 @@
       </template>
     </v-confirm-edit>
   </v-dialog>
+  </div>
 </template>
-
 <script setup>
   // v-dialog
   const dialog = ref(false)
@@ -76,20 +69,23 @@
   })
 
   const selected = ref()
+const headers = [
+  { title: '日付', value: 'date' },
+  { title: 'マーケットメイキング設定名', value: 'marketMakingSetting' },
+  { title: '取引所名', value: 'exchangeName' },
+  { title: 'シンボル', value: 'symbol' },
+  { title: 'エラー', value: 'error' },
+  { title: 'ログメッセージ', value: 'logMessage' },
+];
 
-  const headers = [
-    { title: 'ID', value: 'id' },
-    { title: 'Name', value: 'name' },
-    { title: 'Progress', value: 'progress' },
-    { title: 'Actions', value: 'actions' },
-  ]
+
 
   const items = ref([
-    { id: 1, name: 'Tumwater', progress: 50 },
-    { id: 2, name: 'Siena', progress: 73 },
-    { id: 3, name: 'Cold Harbor', progress: 100 },
-    { id: 4, name: 'Cairns', progress: 92 },
-    { id: 5, name: 'Allentown', progress: 40 },
+    // { id: 1, name: 'Tumwater', progress: 50 },
+    // { id: 2, name: 'Siena', progress: 73 },
+    // { id: 3, name: 'Cold Harbor', progress: 100 },
+    // { id: 4, name: 'Cairns', progress: 92 },
+    // { id: 5, name: 'Allentown', progress: 40 },
   ])
 
   // Adjust progress bar color based on progress
@@ -128,3 +124,6 @@
     items.value = items.value.filter(item => item.id !== id)
   }
 </script>
+<style scope>
+
+</style>

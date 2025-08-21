@@ -1,4 +1,5 @@
 <template>
+  <div class="logo-en-new">
   <v-data-table :headers="headers" :items="items">
     <template v-slot:item.progress="{ item }">
       <v-progress-linear
@@ -13,20 +14,12 @@
     </template>
 
     <template v-slot:item.actions="{ item }">
-      <v-btn
-        variant="text"
-        icon
-        @click="edit(item)"
-        @mouseenter="register($event)"
-      >
-        <v-icon>mdi-pencil</v-icon>
-      </v-btn>
+      
 
-      <v-btn variant="text" icon @click="remove(item.id)">
-        <v-icon>mdi-delete</v-icon>
-      </v-btn>
+      
     </template>
   </v-data-table>
+  
 
   <v-dialog v-model="dialog" :activator="activator" max-width="500">
     <v-confirm-edit
@@ -60,8 +53,8 @@
       </template>
     </v-confirm-edit>
   </v-dialog>
+  </div>
 </template>
-
 <script setup>
   // v-dialog
   const dialog = ref(false)
@@ -76,20 +69,19 @@
   })
 
   const selected = ref()
+const headers = [
+  { title: '請求ID', value: 'invoiceId' },
+  { title: '顧客名', value: 'customerName' },
+  { title: '台数', value: 'units' },
+];
 
-  const headers = [
-    { title: 'ID', value: 'id' },
-    { title: 'Name', value: 'name' },
-    { title: 'Progress', value: 'progress' },
-    { title: 'Actions', value: 'actions' },
-  ]
+
 
   const items = ref([
-    { id: 1, name: 'Tumwater', progress: 50 },
-    { id: 2, name: 'Siena', progress: 73 },
-    { id: 3, name: 'Cold Harbor', progress: 100 },
-    { id: 4, name: 'Cairns', progress: 92 },
-    { id: 5, name: 'Allentown', progress: 40 },
+   { invoiceId: 'INV-001', customerName: '令和アーバントラスト株式会社', units: 3 },
+  { invoiceId: 'INV-002', customerName: '万芳美知子', units: 1 },
+  { invoiceId: 'INV-003', customerName: '小林電機産業', units: 5 },
+  
   ])
 
   // Adjust progress bar color based on progress
@@ -128,3 +120,6 @@
     items.value = items.value.filter(item => item.id !== id)
   }
 </script>
+<style scope>
+
+</style>
